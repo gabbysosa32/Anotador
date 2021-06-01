@@ -84,4 +84,18 @@
 	font-family: 'Poppins', Arial, sans-serif;
 }
 
+.visible {
+  display: block;
+  visibility: visible;
+}
+.oculto {
+  display: none;
+  visibility: hidden;
+}
+.colfondocategorias {
+  background-color: #F7C240;
+}
+.colorFondoPuntaje {
+  background-color: #64E24E;
+}
 
