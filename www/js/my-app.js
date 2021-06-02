@@ -71,7 +71,7 @@ $$(document).on('page:init', '.page[data-name="anotador"]', function (e) {
 var jugador1 ="";
 var jugador2 =""; 
 var juegos = [1,2,3,4,5,6, "escalera", "full", "poker", "generala", "doblegenerala"];
-var posicion =0, dado=0, cant=0;
+var posicion =0, dado=0, cant=0, acum1=0, acum2=0;
 
 function fnIrAAnotador() {
     jugador1 = $$('#IndexJugador1').val();
@@ -94,8 +94,54 @@ function fnIrAInicio(){
 function fnCalcular(){
     if(dado>=1 && dado<=6){
         $$('#'+ posicion).html(cant * dado);
-    } else {
+    } 
+    if (cant == 6) {
         $$('#'+ posicion).html("X");
+    }
+    if (dado == "f"){
+        if(cant == 7){
+            $$('#'+ posicion).html(35);
+        } else if(cant == 8){
+            $$('#'+ posicion).html(30);
+        } else {
+            $$('#'+ posicion).html("X");
+        }
+    }
+    if (dado == "e"){
+        if(cant == 7){
+            $$('#'+ posicion).html(25);
+        } else if(cant == 8){
+            $$('#'+ posicion).html(20);
+        } else {
+            $$('#'+ posicion).html("X");
+        }
+    }
+    if (dado == "p"){
+        if(cant == 7){
+            $$('#'+ posicion).html(45);
+        } else if(cant == 8){
+            $$('#'+ posicion).html(40);
+        } else {
+            $$('#'+ posicion).html("X");
+        }
+    }
+    if (dado == "g"){
+        if(cant == 7){
+            $$('#'+ posicion).html(55);
+        } else if(cant == 8){
+            $$('#'+ posicion).html(50);
+        } else {
+            $$('#'+ posicion).html("X");
+        }
+    }
+    if (dado == "d"){
+        if(cant == 7){
+            $$('#'+ posicion).html(65);
+        } else if(cant == 8){
+            $$('#'+ posicion).html(60);
+        } else {
+            $$('#'+ posicion).html("X");
+        }
     }
 }
 
