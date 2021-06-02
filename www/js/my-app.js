@@ -54,10 +54,24 @@ $$(document).on('page:init', '.page[data-name="anotador"]', function (e) {
     $$("#volverInicio").on('click', fnIrAInicio);
     $$('#j1Nombre').html(jugador1);
     $$('#j2Nombre').html(jugador2);
+    $$('#p11').on('click', fnCalcular1);
+    $$('#p12').on('click', fnCalcular1);
+    $$('#p13').on('click', fnCalcular1);
+    $$('#p14').on('click', fnCalcular1);
+    $$('#p15').on('click', fnCalcular1);
+    $$('#p16').on('click', fnCalcular1);
+    $$('#p17').on('click', fnCalcular1);
+    $$('#p18').on('click', fnCalcular1);
+    $$('#p19').on('click', fnCalcular1);
+    $$('#p20').on('click', fnCalcular1);
+    $$('#p21').on('click', fnCalcular1);
+   
 })
-
 var jugador1 ="";
 var jugador2 ="";
+var uno1=0; dos1=0; tres1=0; cuatro1=0; cinco1=0; seis1=0; escalera1=0; full1=0;poker1=0;generala1=0,doblegenerala1=0;
+var uno2=0; dos2=0; tres2=0; cuatro2=0; cinco2=0; seis2=0; escalera2=0; full2=0;poker2=0;generala2=0,doblegenerala2=0; 
+var juegos = [1,2,3,4,5,6, "escalera", "full", "poker", "generala", "doblegenerala"];
 
 function fnIrAAnotador() {
     jugador1 = $$('#IndexJugador1').val();
@@ -75,3 +89,10 @@ function fnIrAInicio(){
     mainView.router.navigate('/index/');
     $$('#volverInicio').removeClass('visible').addClass('oculto');
 }
+
+function fnCalcular1(){
+    for(i=0; i<=juegos.length; i++){
+
+    }
+} 
+
