@@ -65,13 +65,13 @@ $$(document).on('page:init', '.page[data-name="anotador"]', function (e) {
     $$('#p19').on('click', fnCalcular1);
     $$('#p20').on('click', fnCalcular1);
     $$('#p21').on('click', fnCalcular1);
-   
+    $$('.popover-open').on('click', function(){posicion=this.id; dado=posicion[2]});
+    $$('.popover-close').on('click', function(){cant=this.id; cant=parseInt(cant[0]); fnCalcular()});
 })
 var jugador1 ="";
-var jugador2 ="";
-var uno1=0; dos1=0; tres1=0; cuatro1=0; cinco1=0; seis1=0; escalera1=0; full1=0;poker1=0;generala1=0,doblegenerala1=0;
-var uno2=0; dos2=0; tres2=0; cuatro2=0; cinco2=0; seis2=0; escalera2=0; full2=0;poker2=0;generala2=0,doblegenerala2=0; 
+var jugador2 =""; 
 var juegos = [1,2,3,4,5,6, "escalera", "full", "poker", "generala", "doblegenerala"];
+var posicion =0, dado=0, cant=0;
 
 function fnIrAAnotador() {
     jugador1 = $$('#IndexJugador1').val();
@@ -90,9 +90,25 @@ function fnIrAInicio(){
     $$('#volverInicio').removeClass('visible').addClass('oculto');
 }
 
+
+function fnCalcular(){
+    if(dado>=1 && dado<=6){
+        $$('#'+ posicion).html(cant * dado);
+    } else {
+        $$('#'+ posicion).html("X");
+    }
+}
+
+
+
+
 function fnCalcular1(){
     for(i=0; i<=juegos.length; i++){
-
+        $$('#titleNro').html("Dado "+ juegos[i]);
     }
+    for(i=6; i<=juegos.length; i++){
+        $$('#titleJuego').html("Juego: "+ juegos[i]);
+    }
+   
 } 
 
