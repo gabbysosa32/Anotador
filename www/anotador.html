@@ -16,18 +16,18 @@
     <div class="toolbar toolbar-bottom">
         <div class="toolbar-inner">
         <!-- Toolbar links -->
-        <a href="#" class="link">Terminar</a>
-        <a href="#" class="link">Limpiar</a>
+        <a href="#" id="terminar" class="link popover-open" data-popover=".popover-terminar">Terminar</a>
+        <a href="#" id="limpiar" class="link popover-open" data-popover=".popover-limpiar">Limpiar</a>
         </div>
     </div>
 
-    <div class="page-content">
+    <div class="page-content fondocontent">
         
-        <div class="block block-strong">
+        <div class="block block-strong fondocontent">
             <div class="row">
-                <button class="col button button-fill color-orange">PUNTAJES</button>
-                <button id="j1Nombre" class="col button button-fill color-green">--</button>
-                <button id="j2Nombre" class="col button button-fill color-green">--</button>
+                <button class="col button button-fill color-orange"><b>PUNTAJES</b></button>
+                <button id="j1Nombre" class="col button button-fill color-green"><b>JUGADOR 1</b></button>
+                <button id="j2Nombre" class="col button button-fill color-green"><b>JUGADOR 2</b></button>
             </div>
             <div class="row">
                 <button class="col button button-fill colfondocategorias">UNO</button>
@@ -85,9 +85,9 @@
                 <button id="p2d" class="col button button-fill colorFondoPuntaje popover-open" data-popover=".popover-juegosmayores">-</button>
             </div>
             <div class="row">
-                <button class="col button button-fill colfondocategorias">TOTAL</button>
-                <button id="totalA" class="col button button-fill colorFondoPuntaje">-</button>
-                <button id="totalB" class="col button button-fill colorFondoPuntaje">-</button>
+                <button class="col button button-fill colfondocategorias"><b>TOTAL</b></button>
+                <button id="totalA" class="col button button-fill colorFondoPuntaje">0</button>
+                <button id="totalB" class="col button button-fill colorFondoPuntaje">0</button>
             </div>
         </div>
 
@@ -119,6 +119,49 @@
                             <button id="7p" class="button popover-close">Servido</button><br>
                             <button id="8p" class="button popover-close">Armado</button><br>
                             <button id="9p" class="button popover-close">Tachar</button>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </div>
+
+        <div class="popover popover-terminar">
+            <div class="popover-inner">
+                <div class="block">
+                    <p><b>Puntuaciones</b></p>
+                    <div class="block block-strong">
+                        <div class="row">
+                            <p id="j1"></p>
+                            <p id="j2"></p>
+                            <button class="button popover-close">Ok</button>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </div>
+
+        <div class="popover popover-limpiar">
+            <div class="popover-inner">
+                <div class="block">
+                    <p><b>¿Limpiar anotador?</b></p>
+                    <div class="block block-strong">
+                        <div class="row">
+                            <button id="borrar" class="button popover-close"><b>LIMPIAR</b></button>
+                            <button class="button popover-close">CANCELAR</button>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </div>
+
+        <div class="popover popover-volver">
+            <div class="popover-inner">
+                <div class="block">
+                    <p><b>¿Volver? Se borrarán los puntos.</b></p>
+                    <div class="block block-strong">
+                        <div class="row">
+                            <button id="volver" class="button popover-close"><b>VOLVER</b></button>
+                            <button class="button popover-close">CANCELAR</button>
                         </div>
                     </div> 
                 </div>

@@ -51,26 +51,16 @@ $$(document).on('page:init', '.page[data-name="index"]', function (e) {
 $$(document).on('page:init', '.page[data-name="anotador"]', function (e) {
     // Do something here when page with data-name="about" attribute loaded and initialized
     console.log("Inicia anotador");
-    $$("#volverInicio").on('click', fnIrAInicio);
+    $$("#volver").on('click', fnIrAInicio);
     $$('#j1Nombre').html(jugador1);
     $$('#j2Nombre').html(jugador2);
-    $$('#p11').on('click', fnCalcular1);
-    $$('#p12').on('click', fnCalcular1);
-    $$('#p13').on('click', fnCalcular1);
-    $$('#p14').on('click', fnCalcular1);
-    $$('#p15').on('click', fnCalcular1);
-    $$('#p16').on('click', fnCalcular1);
-    $$('#p17').on('click', fnCalcular1);
-    $$('#p18').on('click', fnCalcular1);
-    $$('#p19').on('click', fnCalcular1);
-    $$('#p20').on('click', fnCalcular1);
-    $$('#p21').on('click', fnCalcular1);
-    $$('.popover-open').on('click', function(){posicion=this.id; dado=posicion[2]});
-    $$('.popover-close').on('click', function(){cant=this.id; cant=parseInt(cant[0]); fnCalcular()});
+    $$('.popover-open').on('click', function(){posicion=this.id; dado=posicion[2]; fnTitlePopover()});
+    $$('.popover-close').on('click', function(){cant=this.id; cant=parseInt(cant[0]); fnCalcular(); fnTotal()});
+    $$('#terminar').on('click', fnTerminar);
+    $$('#borrar').on('click', fnBorrar);
 })
 var jugador1 ="";
 var jugador2 =""; 
-var juegos = [1,2,3,4,5,6, "escalera", "full", "poker", "generala", "doblegenerala"];
 var posicion =0, dado=0, cant=0, acum1=0, acum2=0;
 
 function fnIrAAnotador() {
@@ -86,32 +76,41 @@ function fnIrAAnotador() {
 }
 
 function fnIrAInicio(){
+    fnBorrar();
     mainView.router.navigate('/index/');
     $$('#volverInicio').removeClass('visible').addClass('oculto');
 }
 
-
+function fnTitlePopover(){
+    if (dado>=1 && dado<=6){$$('#titleNro').html("Dado " + dado);} 
+    if (dado == "e"){$$('#titleJuego').html("Juego escalera");}
+    if (dado == "f"){$$('#titleJuego').html("Juego full");}
+    if (dado == "p"){$$('#titleJuego').html("Juego poker");}
+    if (dado == "g"){$$('#titleJuego').html("Juego generala");}
+    if (dado == "d"){$$('#titleJuego').html("Juego doble generala");}
+}
 function fnCalcular(){
-    if(dado>=1 && dado<=6){
+
+    if(dado >= 1 && dado <= 6){
         $$('#'+ posicion).html(cant * dado);
     } 
     if (cant == 6) {
         $$('#'+ posicion).html("X");
-    }
-    if (dado == "f"){
-        if(cant == 7){
-            $$('#'+ posicion).html(35);
-        } else if(cant == 8){
-            $$('#'+ posicion).html(30);
-        } else {
-            $$('#'+ posicion).html("X");
-        }
     }
     if (dado == "e"){
         if(cant == 7){
             $$('#'+ posicion).html(25);
         } else if(cant == 8){
             $$('#'+ posicion).html(20);
+        } else {
+            $$('#'+ posicion).html("X");
+        }
+    }
+    if (dado == "f"){
+        if(cant == 7){
+            $$('#'+ posicion).html(35);
+        } else if(cant == 8){
+            $$('#'+ posicion).html(30);
         } else {
             $$('#'+ posicion).html("X");
         }
@@ -143,18 +142,127 @@ function fnCalcular(){
             $$('#'+ posicion).html("X");
         }
     }
+   
+}
+function fnTotal(){
+    // Sumatoria Jugador 1:
+    acum1=0;
+    for(i=1;i<=6;i++){
+        if($$('#p1'+ i).html() == "X" || $$('#p1'+ i).html() == "-" ){
+            acum1 += 0; 
+        } else {
+            acum1 += parseInt(($$('#p1'+ i).html()));
+        }
+    }
+
+    if($$('#p1e').html()== "X" || $$('#p1e').html()== "-"){
+        acum1 += 0;
+    } else {
+        acum1 += parseInt($$('#p1e').html());
+    }
+
+    if($$('#p1f').html()== "X" || $$('#p1f').html()== "-"){
+        acum1 += 0;
+    } else {
+        acum1 += parseInt($$('#p1f').html());
+    }
+
+    if($$('#p1p').html()== "X" || $$('#p1p').html()== "-"){
+        acum1 += 0;
+    } else {
+        acum1 += parseInt($$('#p1p').html());
+    }
+
+    if($$('#p1g').html()== "X" || $$('#p1g').html()== "-"){
+        acum1 += 0;
+    } else {
+        acum1 += parseInt($$('#p1g').html());
+    }
+
+    if($$('#p1d').html()== "X" || $$('#p1d').html()== "-"){
+        acum1 += 0;
+    } else {
+        acum1 += parseInt($$('#p1d').html());
+    }
+
+    $$('#totalA').html(acum1);
+
+    //Sumatoria Jugador 2:
+    acum2=0;
+    for(i=1;i<=6;i++){
+        if($$('#p2'+ i).html() == "X" || $$('#p2'+ i).html() == "-" ){
+            acum2 += 0; 
+        } else {
+            acum2 += parseInt(($$('#p2'+ i).html()))
+        }
+    }
+
+    if($$('#p2e').html()== "X" || $$('#p2e').html()== "-"){
+        acum2 += 0;
+    } else {
+        acum2 += parseInt($$('#p2e').html());
+    }
+
+    if($$('#p2f').html()== "X" || $$('#p2f').html()== "-"){
+        acum2 += 0;
+    } else {
+        acum2 += parseInt($$('#p2f').html());
+    }
+
+    if($$('#p2p').html()== "X" || $$('#p2p').html()== "-"){
+        acum2 += 0;
+    } else {
+        acum2 += parseInt($$('#p2p').html());
+    }
+
+    if($$('#p2g').html()== "X" || $$('#p2g').html()== "-"){
+        acum2 += 0;
+    } else {
+        acum2 += parseInt($$('#p2g').html());
+    }
+
+    if($$('#p2d').html()== "X" || $$('#p2d').html()== "-"){
+        acum2 += 0;
+    } else {
+        acum2 += parseInt($$('#p2d').html());
+    }
+
+    $$('#totalB').html(acum2);
+   
+}
+
+function fnTerminar(){
+    $$('#j1').html(jugador1+": "+acum1 );
+    $$('#j2').html(jugador2+": "+acum2 );
+}
+
+function fnBorrar(){
+    for(i=1; i<=6; i++){
+        $$('#p1'+i).html("-");
+    }
+    $$('#p1e').html("-");
+    $$('#p1f').html("-");
+    $$('#p1p').html("-");
+    $$('#p1g').html("-");
+    $$('#p1d').html("-");
+    acum1 = 0
+    $$('#totalA').html(acum1);
+
+    for(i=1; i<=6; i++){
+        $$('#p2'+i).html("-");
+    }
+    $$('#p2e').html("-");
+    $$('#p2f').html("-");
+    $$('#p2p').html("-");
+    $$('#p2g').html("-");
+    $$('#p2d').html("-");
+    acum2 = 0
+    $$('#totalB').html(acum2);
+
 }
 
 
 
 
-function fnCalcular1(){
-    for(i=0; i<=juegos.length; i++){
-        $$('#titleNro').html("Dado "+ juegos[i]);
-    }
-    for(i=6; i<=juegos.length; i++){
-        $$('#titleJuego').html("Juego: "+ juegos[i]);
-    }
-   
-} 
+
 
